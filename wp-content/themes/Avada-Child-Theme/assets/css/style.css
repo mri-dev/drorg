@@ -6,7 +6,223 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'FuturaCond';
+  src: url("../fonts/futura/futconn-webfont.eot");
+  src: url("../fonts/futura/futconn-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/futura/futconn-webfont.woff") format("woff"), url("../fonts/futura/futconn-webfont.ttf") format("truetype"), url("../fonts/futura/futconn-webfont.svg#FuturaCond") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaCond';
+  src: url("../fonts/futura/futconb-webfont.eot");
+  src: url("../fonts/futura/futconb-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/futura/futconb-webfont.woff") format("woff"), url("../fonts/futura/futconb-webfont.ttf") format("truetype"), url("../fonts/futura/futconb-webfont.svg#FuturaCond") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* line 1, sass/_base.scss */
-* {
+body, html {
   font-family: 'Futura' !important;
+}
+
+/* line 6, sass/_base.scss */
+#main .post h2, #main .reading-box h2, #main h2, .ei-title h2, .fusion-modal h2, .fusion-title h2, .fusion-widget-area h2, .main-flex .slide-content h2, .post-content h2, .title h2,
+.fusion-author .fusion-author-title, .fusion-header-tagline, .fusion-modal .modal-title, .fusion-modal h3, .fusion-pricing-table .pricing-row, .fusion-pricing-table .title-row, .fusion-title h3, .fusion-widget-area h3, .main-flex .slide-content h3, .post-content h3, .project-content h3, .sidebar .widget h3 {
+  font-family: 'Futura';
+}
+
+/* line 10, sass/_base.scss */
+.fusion-main-menu > ul > li > a, .side-nav li a {
+  font-family: 'FuturaCond';
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 16, sass/_base.scss */
+.fusion-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 5px solid #007a33;
+}
+
+/* line 21, sass/_base.scss */
+.fusion-header > .fusion-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+/* line 29, sass/_base.scss */
+.fusion-header > .fusion-row > .logo {
+  flex-basis: 200px;
+}
+/* line 32, sass/_base.scss */
+.fusion-header > .fusion-row > .logo img {
+  max-height: 110px;
+}
+/* line 36, sass/_base.scss */
+.fusion-header > .fusion-row > .nav {
+  fleX: 1;
+  padding-left: 40px;
+}
+/* line 41, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+/* line 48, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .button {
+  flex-basis: 30px;
+}
+/* line 51, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .button button {
+  height: 30px;
+  width: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* line 59, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp {
+  flex: 1;
+}
+/* line 62, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp input {
+  padding: 10px 0;
+  font-size: 1.2em;
+  color: #007a33;
+  border: none;
+  font-family: 'FuturaCond';
+  font-weight: bold;
+}
+/* line 70, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: 'Futura';
+  font-weight: normal;
+  text-transform: uppercase;
+}
+/* line 76, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: 'Futura';
+  font-weight: normal;
+  text-transform: uppercase;
+}
+/* line 82, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-family: 'Futura';
+  font-weight: normal;
+  text-transform: uppercase;
+}
+/* line 88, sass/_base.scss */
+.fusion-header > .fusion-row > .nav .searcher .wrapper > .inp input:focus {
+  outline: none;
+  border-bottom: 0.5px solid #007a33;
+}
+
+/* line 99, sass/_base.scss */
+.navmenu {
+  padding: 25px 0 15px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #dddddd;
+}
+/* line 104, sass/_base.scss */
+.navmenu .menu-fomenu-container {
+  height: 100%;
+}
+/* line 107, sass/_base.scss */
+.navmenu a, .navmenu a:visited, .navmenu a:hover {
+  color: black;
+  font-weight: 300;
+}
+/* line 111, sass/_base.scss */
+.navmenu ul, .navmenu li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 117, sass/_base.scss */
+.navmenu ul.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  margin: 0 -10px;
+}
+/* line 127, sass/_base.scss */
+.navmenu ul.menu > li {
+  height: 100%;
+  position: relative;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+/* line 133, sass/_base.scss */
+.navmenu ul.menu > li.current_page_item {
+  box-shadow: inset 0 -4px 0 #aaaaaa;
+}
+/* line 137, sass/_base.scss */
+.navmenu ul.menu > li > a {
+  display: block;
+  padding: 0 10px;
+  height: 100%;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-family: 'FuturaCond';
+  font-weight: bold !important;
+}
+/* line 147, sass/_base.scss */
+.navmenu ul.menu > li > a .ico {
+  text-align: center;
+  margin: 12px 0 5px 0;
+}
+/* line 150, sass/_base.scss */
+.navmenu ul.menu > li > a .ico i {
+  font-size: 15px;
+}
+/* line 156, sass/_base.scss */
+.navmenu ul.menu > li > .sub-menu {
+  position: absolute;
+  left: 0;
+  min-width: 200px;
+  max-width: 320px;
+  top: 80px;
+}
+/* line 164, sass/_base.scss */
+.navmenu ul.menu > li > .sub-menu > li > a {
+  padding: 10px;
+  display: block;
+  font-size: 0.8em;
+  width: 100%;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+/* line 172, sass/_base.scss */
+.navmenu ul.menu > li > .sub-menu > li > a:hover {
+  color: black;
+}
+/* line 180, sass/_base.scss */
+.navmenu ul.menu > li:hover > .sub-menu {
+  display: block;
+}
+/* line 187, sass/_base.scss */
+.navmenu ul.sub-menu {
+  display: none;
+}
+
+/* line 192, sass/_base.scss */
+.avada-skin-rev {
+  border: none;
 }
