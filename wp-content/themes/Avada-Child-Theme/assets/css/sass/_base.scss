@@ -7,6 +7,10 @@ body, html {
   font-family: 'Futura';
 }
 
+.post-content h2 {
+  font-size: 2.2em !important;
+}
+
 .fusion-main-menu > ul > li > a, .side-nav li a{
   font-family: 'FuturaCond';
   font-weight: bold;
@@ -16,7 +20,6 @@ body, html {
 .fusion-header{
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 5px solid $color-green;
 }
 .fusion-header > .fusion-row{
   display: -webkit-box;
@@ -97,9 +100,9 @@ body, html {
 }
 
 .navmenu{
-  padding: 25px 0 15px 0;
-  margin: 0 0 15px 0;
-  border-bottom: 1px solid #dddddd;
+  padding: 15px 0 0 0;
+  margin: 0 0 10px 0;
+  border-bottom: 0.5px solid #cdcdcd;
 
   .menu-fomenu-container{
     height: 100%;
@@ -130,17 +133,16 @@ body, html {
       -webkit-transition: all .4s;
       transition: all .4s;
 
-      &.current_page_item{
-        box-shadow: inset 0 -4px 0 #aaaaaa;
-      }
+
 
       & > a{
         display: block;
         padding: 0 10px;
         height: 100%;
-        line-height: 1;
+        line-height: 45px;
+        height: 45px;
         text-transform: uppercase;
-        font-size: 1.2em;
+        font-size: 1.35em;
         font-family: 'FuturaCond';
         font-weight: bold !important;
 
@@ -153,18 +155,24 @@ body, html {
         }
       }
 
+      &.current_page_item{
+         & > a {
+           color: $color-green;
+         }
+      }
+
       & > .sub-menu{
         position: absolute;
         left: 0;
         min-width: 200px;
         max-width: 320px;
-        top: 80px;
+        background: #ececec;
 
         & > li {
           & > a {
-            padding: 10px;
+            padding: 8px 12px;
             display: block;
-            font-size: 0.8em;
+            font-size: 1.1em;
             width: 100%;
             -webkit-transition: all .4s;
             transition: all .4s;
@@ -191,4 +199,161 @@ body, html {
 
 .avada-skin-rev{
   border: none;
+}
+
+ .fusion-widget-area h3,
+ .fusion-widget-area h4,
+ .fusion-footer-widget-area .widget-title, .fusion-footer-widget-area h3, .fusion-footer-widget-column .product-title{
+   font-family: 'Futura';
+   font-size: 1.3em;
+   font-weight: bold;
+   margin: 0 0 30px 0;
+ }
+ .fusion-footer-widget-area .widget_nav_menu li a:before, .fusion-footer-widget-area .widget_categories li a:before, .fusion-footer-widget-area .widget_meta li a:before, .fusion-footer-widget-area .widget .recentcomments:before, .fusion-footer-widget-area .widget_recent_entries li a:before, .fusion-footer-widget-area .widget_archive li a:before, .fusion-footer-widget-area .widget_pages li a:before, .fusion-footer-widget-area .widget_links li a:before{
+   content:"";
+   display: none;
+ }
+.fusion-widget-area .widget_nav_menu li{
+  padding: 4px 0;
+  border: none;
+  a{
+    text-transform: uppercase;
+    color: #ababab;
+  }
+}
+.fusion-footer-widget-area{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.fusion-footer-copyright-area{
+  padding: 10px 0;
+}
+.fusion-footer .fusion-columns .fusion-column{
+  border-right: 2px solid #eaeaea;
+  height: 260px;
+  padding: 25px;
+}
+.fusion-footer .fusion-columns .fusion-column.fusion-column-last{
+  border-right: none;
+}
+.fusion-copyright-notice{
+  color: #343434;
+}
+
+.grid{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-contacts{
+  .wrapper{
+    width: $page-width;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+  .subs-nav{
+    background: $color-green;
+    color: white;
+    & > .wrapper > .grid{
+      align-items: center;
+
+      .social{
+        padding-right: 20px;
+        border-right: 1px solid white;
+        flex-basis: 180px;
+
+        .fusion-social-networks .fusion-social-network-icon{
+          margin: 5px 15px 5px 15px;
+          font-size: 22px;
+        }
+      }
+      .subs{
+        flex: 1;
+        padding-left: 20px;
+        & > .grid{
+          align-items: center;
+          justify-content: flex-end;
+
+          & > div {
+            padding: 0 15px;
+          }
+
+          .text {
+            font-size: 2em;
+          }
+
+          .inp {
+            flex-basis: 40%;
+            input{
+              height: 35px;
+              line-height: 35px;
+              padding: 0 12px;
+              width: 100%;
+              color: $color-green;
+              font-weight: bold;
+              font-size: 1.1em;
+            }
+          }
+
+          .button {
+            button {
+              border: 2px solid white;
+              background: none;
+              padding: 0 12px;
+              color: white;
+              font-weight: bold;
+              text-transform: uppercase;
+              cursor: pointer;
+              line-height: 35px;
+              height: 35px;
+
+              &:hover{
+                background: white;
+                color: black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .cont{
+    background: #f4f4f4;
+    color: #343434;
+    font-size: 1.2em;
+    & > .wrapper > .grid{
+      justify-content: space-between;
+      align-items: center;
+    }
+    .phone, .email {
+      line-height: 1;
+      & > .grid{
+        & > div {
+          padding: 10px;
+        }
+
+        .text {
+          text-transform: uppercase;
+          font-size: 0.9em;
+          line-height: 1;
+          text-align: center;
+        }
+
+        .ico {
+          i {
+            font-size: 24px;
+            color: $color-green;
+            margin: 0;
+            padding: 0;
+          }
+        }
+
+        .val{
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
 }
