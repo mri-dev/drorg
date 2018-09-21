@@ -6,23 +6,28 @@
       $datas->the_post();
       $pid = get_the_ID();
 
-      $img = get_the_post_thumbnail_url($pid);
+      $img = get_the_post_thumbnail_url($pid, 'post500thumbnail');
       $url = get_the_permalink($pid);
       $desc = get_the_excerpt($pid);
     ?>
     <div class="item">
       <div class="wrapper">
-        <div class="image">
-
-        </div>
+        <?php if ($img): ?>
+          <div class="image">
+            <a href="<? echo the_permalink(); ?>"><img src="<?=$img?>" alt="<? echo the_title(); ?>"></a>
+          </div>
+        <?php endif; ?>
         <div class="date">
           <?php echo the_date(); ?>
         </div>
         <div class="title">
-          <h3><a href="#"><? echo the_title(); ?></a></h3>
+          <h3><a href="<? echo the_permalink(); ?>"><? echo the_title(); ?></a></h3>
         </div>
         <div class="desc">
-          <?php echo the_excerpt(); ?>
+          <?php echo the_excerpt('...'); ?>
+        </div>
+        <div class="read">
+          <a href="<? echo the_permalink(); ?>"><? echo __('Részletek', TD); ?> <i class="fa fa-long-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -33,4 +38,12 @@
     </div>
   <? endif; ?>
   </div>
+  <script type="text/javascript">
+    (function($){
+      $('.blog-list-holder.style-slide.wantslide .list').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      });
+    })(jQuery);
+  </script>
 </div>

@@ -58,7 +58,7 @@ class BlogListSC
 
         $pass_data = $attr;
 
-        $output = '<div class="'.self::SCTAG.'-holder style-'.$attr['style'].'">';
+        $output = '<div class="'.self::SCTAG.'-holder style-'.$attr['style'].''.( ((int)$datas->found_posts > 3) ? ' wantslide' : '' ).'">';
 
         $output .= (new ShortcodeTemplates('BlogList'))->load_template( $pass_data );
 
