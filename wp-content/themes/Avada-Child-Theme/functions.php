@@ -185,6 +185,7 @@ function rd_init()
   add_rewrite_rule('^jelentkezes/([0-9]+)/?', 'index.php?custom_page=jelentkezes&ac_id=$matches[1]', 'top');
 
   add_image_size( 'post500thumbnail', 500, 9999 );
+  add_theme_support('category-thumbnails');
 
   create_custom_posttypes();
 }

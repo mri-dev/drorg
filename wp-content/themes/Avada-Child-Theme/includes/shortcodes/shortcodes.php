@@ -5,4 +5,5 @@
 	 require_once "ContactForm.php";
 	 require_once "ContactBlock.php";
 	 require_once "BlogListSC.php";
+	 require_once "ProdCatSC.php";
 ?>
