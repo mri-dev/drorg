@@ -324,6 +324,235 @@ body, html {
   }
 }
 
+ul.nav {
+	margin: 0 0 20px 0;
+  padding: 0;
+
+	li {
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+
+		&:after{
+			content:"/";
+			margin: 0 5px;
+			color: #e2e2e2;
+		}
+
+		a{
+			color: #4a4a4a;
+      text-transform: uppercase;
+			font-size: 0.9em;
+      font-family: 'Roboto';
+
+      &:hover{
+        color: $color-green;
+      }
+		}
+		a.cat{
+			color: white;
+			font-size: 0.8em;
+			text-decoration: none;
+
+			span{
+				padding: 2px 4px;
+			}
+		}
+
+		&:last-child{
+			&:after{
+				display: none;
+			}
+		}
+	}
+}
+
+.archive.tax-kategoria{
+  #main{
+    padding: 0;
+    & > .fusion-row{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  .borito {
+    background: #acacac;
+    height: 420px;
+    .wrapper{
+      height: 100%;
+      width: $page-width;
+      margin: 0 auto;
+      position: relative;
+
+      .felirat{
+        background: rgba(255, 255, 255, 0.91);
+        text-align: center;
+        padding: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        -webkit-transform:translate(-50%,-50%);
+        transform:translate(-50%,-50%);
+
+
+        h1 {
+          text-transform: uppercase;
+          font-weight: 300;
+          font-size: 4vh;
+          color: black;
+          margin: 0 0 20px 0;
+        }
+
+        .desc{
+          color: black;
+          font-size: 1.2em;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+
+}
+
+.term-list{
+  padding: 15px 0;
+
+  .products{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: -15px;
+    & > div {
+      flex-basis: calc(100% / 3);
+      padding: 15px;
+      & > .wrapper{
+        border: 0.5px solid transparent;
+        .image{
+          text-align: center;
+          padding: 15px;
+          height: 240px;
+          overflow: hidden;
+          position: relative;
+          img{
+            width: auto;
+            max-width: initial;
+            height: 90%;
+            max-height: 90%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+          }
+        }
+
+        .datas{
+          padding: 15px;
+
+          .title{
+            text-align: center;
+            h4{
+              text-align: center;
+              font-size: 1.15em;
+              margin: 0 0 25px 0;
+              a {
+                display: block;
+              }
+            }
+          }
+
+          .bt{
+            text-align: center;
+            padding: 0 0 15px 0;
+            a{
+              padding: 8px 10px;
+              text-transform: uppercase;
+              color: $color-green;
+              border: 2px solid $color-green;
+              font-weight: 600;
+              -webkit-transition: all .4s;
+                transition:all .4s;
+
+              &:hover{
+                background: $color-green;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+
+      &:hover{
+        & > .wrapper{
+          border: 0.5px solid #d7d7d7;
+        }
+      }
+    }
+  }
+
+  .no-products{
+    text-align: center;
+    padding: 25px;
+    font-size: 1.2em;
+
+    h3 {
+      color: black;
+      text-transform: uppercase;
+    }
+  }
+
+  .header{
+    border-bottom: 1px solid #dcdcdc;
+    margin: 0 0 15px 0;
+    padding: 0 0 10px 0;
+
+    .nav {
+      margin: 0 0 20px 0;
+    }
+
+    .filters{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      & > .info {
+        flex-basis: 150px;
+        color: black;
+        font-size: 1.2em;
+      }
+      & > .filter{
+        flex: 1;
+        & > form > .wrapper{
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-end;
+
+          input, select{
+            padding: 10px;
+            background: #f3f3f3;
+            border: 0.5px solid #cdcdcd;
+            color: black;
+            height: 35px;
+          }
+
+          & > div {
+            padding: 0 0 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .product-categories-holder{
   &.style-boxslide{
     .holder{
