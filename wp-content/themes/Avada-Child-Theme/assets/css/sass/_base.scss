@@ -133,8 +133,6 @@ body, html {
       -webkit-transition: all .4s;
       transition: all .4s;
 
-
-
       & > a{
         display: block;
         padding: 0 10px;
@@ -191,6 +189,14 @@ body, html {
       &:hover{
         & > .sub-menu{
           display: block;
+        }
+      }
+
+      &.menu-item-has-children{
+        & > a:after {
+          content: "\f107";
+          font-family: 'FontAwesome';
+          margin: 0 0 0 6px;
         }
       }
     }
@@ -367,7 +373,8 @@ ul.nav {
 	}
 }
 
-.archive.tax-kategoria{
+.archive.tax-kategoria,
+.archive.tax-csoportok{
   #main{
     padding: 0;
     & > .fusion-row{
@@ -378,6 +385,9 @@ ul.nav {
   .borito {
     background: #acacac;
     height: 420px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     .wrapper{
       height: 100%;
       width: $page-width;
@@ -385,7 +395,7 @@ ul.nav {
       position: relative;
 
       .felirat{
-        background: rgba(255, 255, 255, 0.91);
+        background: rgba(255, 255, 255, 0.9);
         text-align: center;
         padding: 25px;
         position: absolute;
@@ -522,9 +532,25 @@ ul.nav {
       align-items: center;
 
       & > .info {
-        flex-basis: 150px;
+        flex-basis: 50%;
         color: black;
         font-size: 1.2em;
+
+        .src-result{
+          color: #8d8d8d;
+          font-size: 0.9em;
+
+          .srckeys{
+            span {
+              background: #e8e8e8;
+              color: #1b1b1b;
+              padding: 3px 6px;
+              border-radius: 9px;
+              margin: 0 4px;
+              font-size: 0.7em;
+            }
+          }
+        }
       }
       & > .filter{
         flex: 1;

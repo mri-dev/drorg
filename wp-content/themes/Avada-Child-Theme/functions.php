@@ -191,6 +191,48 @@ function rd_init()
 }
 add_action('init', 'rd_init');
 
+add_action( 'kategoria_edit_form_fields', 'kategoria_taxonomy_custom_fields', 10, 2 );
+add_action( 'kategoria_add_form_fields', 'kategoria_taxonomy_custom_fields', 10, 2 );
+add_action( 'csoportok_edit_form_fields', 'kategoria_taxonomy_custom_fields', 10, 2 );
+add_action( 'csoportok_add_form_fields', 'kategoria_taxonomy_custom_fields', 10, 2 );
+
+function kategoria_taxonomy_custom_fields($tag) {
+   // Check for existing taxonomy meta for the term you're editing
+    $t_id = $tag->term_id; // Get the ID of the term you're editing
+    $term_meta = get_option( "taxonomy_term_$t_id" ); // Do the check
+?>
+
+<tr class="form-field">
+	<th scope="row" valign="top">
+		<label for="boritokep"><?php _e('Borítókép'); ?></label>
+	</th>
+	<td>
+		<input type="text" name="term_meta[boritokep]" id="term_meta[boritokep]" size="25" style="width:100%;" value="<?php echo $term_meta['boritokep'] ? $term_meta['boritokep'] : ''; ?>">
+	</td>
+</tr>
+
+<?php
+}
+
+add_action( 'create_kategoria', 'save_kategoria_tax_field' );
+add_action( 'edited_kategoria', 'save_kategoria_tax_field' );
+add_action( 'create_csoportok', 'save_kategoria_tax_field' );
+add_action( 'edited_csoportok', 'save_kategoria_tax_field' );
+function save_kategoria_tax_field( $term_id ){
+  if ( isset( $_POST['term_meta'] ) ) {
+      $t_id = $term_id;
+      $term_meta = get_option( "taxonomy_term_$t_id" );
+      $cat_keys = array_keys( $_POST['term_meta'] );
+          foreach ( $cat_keys as $key ){
+          if ( isset( $_POST['term_meta'][$key] ) ){
+              $term_meta[$key] = $_POST['term_meta'][$key];
+          }
+      }
+      //save the option array
+      update_option( "taxonomy_term_$t_id", $term_meta );
+  }
+}
+
 function app_query_vars($aVars) {
   $aVars[] = "ac_id";
   $aVars[] = "custom_page";

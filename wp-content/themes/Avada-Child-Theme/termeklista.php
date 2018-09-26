@@ -11,6 +11,11 @@
       ),
     )
   );
+  if (isset($_GET['src']) && $_GET['src'] != '') {
+    $src = explode(" ", $_GET['src']);
+    $is_searched = implode(",",$src);
+    $arg['tag'] = $is_searched;
+  }
   $products = new WP_Query($arg);
 ?>
 <div class="term-list">
@@ -25,6 +30,9 @@
     <div class="filters">
       <div class="info">
         <strong><?php echo sprintf(__('%d db termék', TD), $products->found_posts); ?></strong>
+        <?php if ($is_searched): ?>
+           &bull; <span class="src-result"><?php echo __('Keresési kifejezések:', TD); ?> <span class=srckeys><span><? echo  implode("</span><span>",$src); ?></span></span>
+        <?php endif; ?>
       </div>
       <div class="filter">
         <form class="" id="filter" action="" method="get">
