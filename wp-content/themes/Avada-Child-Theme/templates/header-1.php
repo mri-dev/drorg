@@ -15,10 +15,10 @@
       ?>
       </div>
       <div class="searcher">
-        <form class="" action="" method="get">
+        <form class="" action="/termekek/" method="get">
           <div class="wrapper">
             <div class="inp">
-              <input autocomplete="off" type="text" name="s" value="" placeholder="<?php echo __('Keresés', TD); ?>">
+              <input autocomplete="off" type="text" name="src" value="<?=$_GET['src']?>" placeholder="<?php echo __('Keresés', TD); ?>">
             </div>
             <div class="button">
               <button type="submit"><i class="fa fa-search"></i></button>

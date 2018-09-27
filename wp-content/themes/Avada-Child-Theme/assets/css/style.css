@@ -919,3 +919,86 @@ ul.nav li:last-child:after {
 .footer-contacts .cont .phone > .grid .val, .footer-contacts .cont .email > .grid .val {
   font-size: 1.3em;
 }
+
+/* line 860, sass/_base.scss */
+body.single-termekek #main {
+  padding: 20px;
+  border-top: 5px solid #d1d1d1;
+}
+/* line 864, sass/_base.scss */
+body.single-termekek .cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -20px;
+}
+/* line 872, sass/_base.scss */
+body.single-termekek .cont > .image, body.single-termekek .cont > .prod-body {
+  flex-basis: 50%;
+  padding: 0 20px;
+}
+/* line 878, sass/_base.scss */
+body.single-termekek .cont .image > .wrapper {
+  border: 1px solid #f1f1f1;
+  padding: 10px;
+}
+/* line 885, sass/_base.scss */
+body.single-termekek .cont .prod-body h1 {
+  margin: 0 0 25px 0;
+  color: #007a33;
+  font-weight: bold;
+  font-size: 2.4em;
+}
+/* line 892, sass/_base.scss */
+body.single-termekek .cont .prod-body .description {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+/* line 901, sass/_base.scss */
+body.single-termekek .terms .term {
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+/* line 905, sass/_base.scss */
+body.single-termekek .terms .term a {
+  font-family: 'Roboto';
+  color: #444444;
+}
+/* line 909, sass/_base.scss */
+body.single-termekek .terms .term a:hover {
+  color: #007a33;
+}
+
+/* line 917, sass/_base.scss */
+.pagination {
+  width: 100%;
+  text-align: center;
+}
+/* line 920, sass/_base.scss */
+.pagination ul {
+  margin: 10px auto;
+}
+/* line 922, sass/_base.scss */
+.pagination ul li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+  padding: 2px;
+}
+/* line 929, sass/_base.scss */
+.pagination ul li a {
+  background: #dddddd;
+  padding: 5px 8px;
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+/* line 937, sass/_base.scss */
+.pagination ul li.active a {
+  background: #007a33;
+  color: white;
+}

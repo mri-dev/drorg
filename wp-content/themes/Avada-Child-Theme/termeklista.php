@@ -1,22 +1,105 @@
 <?php
   global $taxonomy;
+
+  $orderby = 'name';
+  $ord = 'ASC';
+  $current_page = 1;
+  $current_page = (!empty($_GET['page'])) ? (int)$_GET['page'] : $current_page;
+
+  if (isset($_GET['order']) && !empty($_GET['order'])) {
+    $xord = explode("-", $_GET['order']);
+    $orderby = $xord[0];
+    $ord = $xord[1];
+  }
+
+  $pages = array(
+    'current' => 1,
+    'max' => 1,
+    'items' => 0
+  );
+
   $arg = array(
     'post_type' => 'termekek',
-    'posts_per_page' => 20,
-    'tax_query' => array(
+    'posts_per_page' => 12,
+    'paged' => $current_page,
+    'orderby' => $orderby,
+    'order' => $ord
+  );
+  if (isset($taxonomy->taxonomy)) {
+    $arg['tax_query'] = array(
       array(
-        'taxonomy' => 'kategoria',
+        'taxonomy' => $taxonomy->taxonomy,
         'field'    => 'term_id',
         'terms'    => $taxonomy->term_id
       ),
-    )
-  );
+    );
+  }
+
   if (isset($_GET['src']) && $_GET['src'] != '') {
     $src = explode(" ", $_GET['src']);
     $is_searched = implode(",",$src);
     $arg['tag'] = $is_searched;
   }
+
   $products = new WP_Query($arg);
+
+  $pages['current'] = $current_page;
+  $pages['max'] = (int)$products->max_num_pages;
+  $pages['items'] = (int)$products->found_posts;
+
+  function pagination( $tax, $pages )
+  {
+    if (isset($tax->taxonomy)) {
+      $href = get_term_link($tax);
+    } else {
+      $href = '/termekek/';
+    }
+
+    $param = array();
+    unset($_GET['page']);
+    $param = $_GET;
+    $qry = build_query($param);
+    if ( $qry == '') {
+      $href .= '?';
+    } else {
+      $href .= '?'.$qry.'&';
+    }
+
+    $t = '<div class="pagination">';
+      $t .= '<ul>';
+      for( $p = 1; $p <= $pages[max]; $p++ ){
+        $t .= '<li class="'. ( ($p == $pages[current])?'active':'' ) .'"><a href="'.$href.'page='.$p.'">'.$p.'</a></li>';
+      }
+      $t .= '</ul>';
+    $t .= '</div>';
+
+    return $t;
+  }
+
+  function tax_nav( $tax )
+  {
+    $taxarr = array();
+    $ct = $tax;
+    $taxoname = $tax->taxonomy;
+    $has_parent = ($ct->parent != 0) ? true : false;
+
+    if ($has_parent) {
+      while( $has_parent )
+      {
+        if( $ct->parent == 0 ) $has_parent = false;
+        $taxarr[] = $ct;
+        $ct = get_term($ct->parent, $taxoname);
+      }
+    } else {
+      $taxarr[] = $ct;
+    }
+
+    $taxarr = array_reverse($taxarr);
+
+    return $taxarr;
+  }
+
+  $tax_nav = tax_nav( $taxonomy );
 ?>
 <div class="term-list">
   <div class="header">
@@ -24,7 +107,11 @@
       <ul class="nav">
         <li><a href="/"><?php echo __('Főoldal', TD); ?></a></li>
         <li><a href="/termekek"><?php echo __('Termékek', TD); ?></a></li>
-        <li><a href="<?=get_term_link($taxonomy)?>"><?php echo $taxonomy->name; ?></a></li>
+        <?php if ($tax_nav): ?>
+          <?php foreach ($tax_nav as $tn): ?>
+          <li><a href="<?=get_term_link($tn)?>"><?php echo $tn->name; ?></a></li>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </ul>
     </div>
     <div class="filters">
@@ -82,6 +169,7 @@
         </div>
       <?php } wp_reset_postdata(); ?>
       </div>
+      <?php echo pagination($taxonomy, $pages); ?>
     <?php else: ?>
       <div class="no-products">
         <h3><?php echo __('Nincsenek termékek.', TD); ?></h3>
