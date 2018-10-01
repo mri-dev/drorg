@@ -785,7 +785,7 @@ ul.nav li:last-child:after {
 /* line 729, sass/_base.scss */
 .fusion-footer .fusion-columns .fusion-column {
   border-right: 2px solid #eaeaea;
-  height: 260px;
+  height: 280px;
   padding: 25px;
 }
 
@@ -973,15 +973,157 @@ body.single-termekek .terms .term a:hover {
 }
 
 /* line 917, sass/_base.scss */
+#wrapper #main .post > h2.entry-title {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+/* line 925, sass/_base.scss */
+.dijak-lista .dij,
+.dijak-lista .viszontelado,
+.viszonteladok-lista .dij,
+.viszonteladok-lista .viszontelado {
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 5px solid #f1f1f1;
+}
+/* line 929, sass/_base.scss */
+.dijak-lista .dij > .wrapper,
+.dijak-lista .viszontelado > .wrapper,
+.viszonteladok-lista .dij > .wrapper,
+.viszonteladok-lista .viszontelado > .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+/* line 935, sass/_base.scss */
+.dijak-lista .dij > .wrapper .image,
+.dijak-lista .viszontelado > .wrapper .image,
+.viszonteladok-lista .dij > .wrapper .image,
+.viszonteladok-lista .viszontelado > .wrapper .image {
+  flex-basis: 80px;
+  text-align: center;
+}
+/* line 939, sass/_base.scss */
+.dijak-lista .dij > .wrapper .datas,
+.dijak-lista .viszontelado > .wrapper .datas,
+.viszonteladok-lista .dij > .wrapper .datas,
+.viszonteladok-lista .viszontelado > .wrapper .datas {
+  padding: 0 0 0 20px;
+  flex: 1;
+}
+/* line 942, sass/_base.scss */
+.dijak-lista .dij > .wrapper .datas h4,
+.dijak-lista .viszontelado > .wrapper .datas h4,
+.viszonteladok-lista .dij > .wrapper .datas h4,
+.viszonteladok-lista .viszontelado > .wrapper .datas h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.8em;
+  font-weight: bold;
+  line-height: 1;
+}
+/* line 954, sass/_base.scss */
+.dijak-lista .viszontelado > .wrapper .image,
+.viszonteladok-lista .viszontelado > .wrapper .image {
+  flex-basis: 80px;
+}
+/* line 956, sass/_base.scss */
+.dijak-lista .viszontelado > .wrapper .image img,
+.viszonteladok-lista .viszontelado > .wrapper .image img {
+  width: 100%;
+}
+/* line 961, sass/_base.scss */
+.dijak-lista .viszontelado > .wrapper .datas h4,
+.viszonteladok-lista .viszontelado > .wrapper .datas h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.3em;
+  color: #007a33;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* line 974, sass/_base.scss */
+.award-list-holder > .holder {
+  border: 1px solid #ececec;
+}
+/* line 976, sass/_base.scss */
+.award-list-holder > .holder > .list {
+  padding: 20px;
+}
+/* line 984, sass/_base.scss */
+.award-list-holder .list .item .wrapper .image {
+  text-align: center;
+}
+/* line 986, sass/_base.scss */
+.award-list-holder .list .item .wrapper .image img {
+  margin: 0 auto;
+}
+/* line 994, sass/_base.scss */
+.award-list-holder .slick-arrow {
+  position: absolute;
+  top: 50%;
+  text-indent: -9999999px;
+  border: 1px solid #007a33;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  background: transparent;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* line 1007, sass/_base.scss */
+.award-list-holder .slick-arrow:focus {
+  outline: none;
+}
+/* line 1011, sass/_base.scss */
+.award-list-holder .slick-arrow:before {
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 12px;
+  color: #007a33;
+  text-indent: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* line 1023, sass/_base.scss */
+.award-list-holder .slick-arrow.slick-next {
+  right: -50px;
+}
+/* line 1025, sass/_base.scss */
+.award-list-holder .slick-arrow.slick-next:before {
+  content: "\f178";
+}
+/* line 1029, sass/_base.scss */
+.award-list-holder .slick-arrow.slick-prev {
+  left: -50px;
+}
+/* line 1031, sass/_base.scss */
+.award-list-holder .slick-arrow.slick-prev:before {
+  content: "\f177";
+}
+/* line 1036, sass/_base.scss */
+.award-list-holder .slick-arrow:hover {
+  background: #007a33;
+}
+/* line 1038, sass/_base.scss */
+.award-list-holder .slick-arrow:hover:before {
+  color: white;
+}
+
+/* line 1045, sass/_base.scss */
 .pagination {
   width: 100%;
   text-align: center;
 }
-/* line 920, sass/_base.scss */
+/* line 1048, sass/_base.scss */
 .pagination ul {
   margin: 10px auto;
 }
-/* line 922, sass/_base.scss */
+/* line 1050, sass/_base.scss */
 .pagination ul li {
   display: inline-block;
   *display: inline;
@@ -989,7 +1131,7 @@ body.single-termekek .terms .term a:hover {
   vertical-align: middle;
   padding: 2px;
 }
-/* line 929, sass/_base.scss */
+/* line 1057, sass/_base.scss */
 .pagination ul li a {
   background: #dddddd;
   padding: 5px 8px;
@@ -997,7 +1139,7 @@ body.single-termekek .terms .term a:hover {
   color: black;
   text-decoration: none;
 }
-/* line 937, sass/_base.scss */
+/* line 1065, sass/_base.scss */
 .pagination ul li.active a {
   background: #007a33;
   color: white;

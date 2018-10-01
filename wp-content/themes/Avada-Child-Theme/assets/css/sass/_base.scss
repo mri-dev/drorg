@@ -728,7 +728,7 @@ ul.nav {
 }
 .fusion-footer .fusion-columns .fusion-column{
   border-right: 2px solid #eaeaea;
-  height: 260px;
+  height: 280px;
   padding: 25px;
 }
 .fusion-footer .fusion-columns .fusion-column.fusion-column-last{
@@ -909,6 +909,134 @@ body.single-termekek{
         &:hover{
           color: $color-green;
         }
+      }
+    }
+  }
+}
+
+#wrapper #main .post > h2.entry-title{
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.dijak-lista,
+.viszonteladok-lista{
+  .dij,
+  .viszontelado{
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+    border-bottom: 5px solid #f1f1f1;
+    & > .wrapper{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: wrap;
+
+      .image{
+        flex-basis: 80px;
+        text-align: center;
+      }
+      .datas{
+        padding: 0 0 0 20px;
+        flex: 1;
+        h4{
+          margin: 0 0 10px 0;
+          font-size: 1.8em;
+          font-weight: bold;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  .viszontelado{
+    & > .wrapper{
+      .image{
+        flex-basis: 80px;
+        img {
+          width: 100%;
+        }
+      }
+      .datas{
+        h4{
+          margin: 0 0 5px 0;
+          font-size: 1.3em;
+          color: $color-green;
+          font-weight: bold;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+.award-list-holder{
+  & > .holder{
+    border: 1px solid #ececec;
+    & > .list {
+      padding: 20px;
+    }
+  }
+
+  .list{
+    .item{
+      .wrapper{
+        .image{
+          text-align: center;
+          img {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+
+  .slick-arrow{
+    position: absolute;
+    top: 50%;
+    text-indent: -9999999px;
+    border: 1px solid $color-green;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    background: transparent;
+    -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+    &:focus{
+      outline: none;
+    }
+
+    &:before{
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 12px;
+      color: $color-green;
+      text-indent: 0;
+      -webkit-transform:translate(-50%,-50%);
+        transform:translate(-50%,-50%);
+    }
+
+    &.slick-next{
+      right: -50px;
+      &:before{
+        content:"\f178";
+      }
+    }
+    &.slick-prev{
+      left: -50px;
+      &:before{
+        content:"\f177";
+      }
+    }
+
+    &:hover{
+      background: $color-green;
+      &:before{
+        color: white;
       }
     }
   }

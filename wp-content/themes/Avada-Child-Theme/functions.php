@@ -48,7 +48,7 @@ function theme_enqueue_styles() {
     //wp_enqueue_style( 'angular-material','//ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css');
     //wp_enqueue_style( 'angualardatepick', IFROOT . '/assets/vendors/md-date-range-picker/md-date-range-picker.min.css?t=' . ( (DEVMODE === true) ? time() : '' ) );
 
-    wp_enqueue_script( 'google-maps', '//maps.googleapis.com/maps/api/js?sensor=false&language='.get_locale().'&region=hu&libraries=places&key='.GOOGLE_API_KEY);
+    //wp_enqueue_script( 'google-maps', '//maps.googleapis.com/maps/api/js?sensor=false&language='.get_locale().'&region=hu&libraries=places&key='.GOOGLE_API_KEY);
     wp_enqueue_script( 'recaptcha', '//www.google.com/recaptcha/api.js');
     wp_enqueue_script( 'jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'), '1.12.1');
     wp_enqueue_script( 'jquery-ui-loc-hu', IFROOT . '/assets/js/jquery-ui-loc-hu.js');
@@ -243,7 +243,6 @@ add_filter('query_vars', 'app_query_vars');
 function create_custom_posttypes()
 {
   // Programok
-
   $products = new PostTypeFactory( 'termekek' );
 	$products->set_textdomain( TD );
 	$products->set_icon('tag');
@@ -299,6 +298,45 @@ function create_custom_posttypes()
 
   $products->create();
   add_post_type_support( 'termekek', 'excerpt' );
+
+  // Viszonteladók
+  $resellers = new PostTypeFactory( 'viszonteladok' );
+	$resellers->set_textdomain( TD );
+	$resellers->set_icon('admin-users');
+	$resellers->set_name( 'Viszonteladó', 'Viszonteladók' );
+	$resellers->set_labels( array(
+		'add_new' => 'Új %s',
+		'not_found_in_trash' => 'Nincsenek %s a lomtárban.',
+		'not_found' => 'Nincsenek %s a listában.',
+		'add_new_item' => 'Új %s létrehozása',
+	) );
+
+  $resellers_metabox = new CustomMetabox(
+    'viszonteladok',
+    __('Egyéb paraméterek', TD),
+    new ViszonteladoMetaboxSave(),
+    'viszonteladok',
+    array(
+      'class' => 'viszonteladoksettings-postbox'
+    )
+  );
+
+  $resellers->create();
+  add_post_type_support( 'viszonteladok', 'excerpt' );
+
+  // Díjak
+  $dijak = new PostTypeFactory( 'dijak' );
+	$dijak->set_textdomain( TD );
+	$dijak->set_icon('welcome-learn-more');
+	$dijak->set_name( 'Díj', 'Díjak' );
+	$dijak->set_labels( array(
+		'add_new' => 'Új %s',
+		'not_found_in_trash' => 'Nincsenek %s a lomtárban.',
+		'not_found' => 'Nincsenek %s a listában.',
+		'add_new_item' => 'Új %s létrehozása',
+	) );
+  $dijak->create();
+  add_post_type_support( 'dijak', 'excerpt' );
 
 
 }
