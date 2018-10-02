@@ -7,7 +7,7 @@ define('DEVMODE', true);
 define('IMG', IFROOT.'/images');
 define('GOOGLE_API_KEY', 'AIzaSyA0Mu8_XYUGo9iXhoenj7HTPBIfS2jDU2E');
 define('LANGKEY','hu');
-define('FB_APP_ID', '1900170110285208');
+define('FB_APP_ID', '305162130074910');
 define('METAKEY_PREFIX', 'drorg_'); // Textdomain
 define('DEFAULT_LANGUAGE', 'hu_HU');
 define('TD', 'drorg');
@@ -338,7 +338,45 @@ function create_custom_posttypes()
   $dijak->create();
   add_post_type_support( 'dijak', 'excerpt' );
 
+  // Videók
+  $videos = new PostTypeFactory( 'videok' );
+	$videos->set_textdomain( TD );
+	$videos->set_icon('video-alt3');
+	$videos->set_name( 'Videó', 'Videók' );
+	$videos->set_labels( array(
+		'add_new' => 'Új %s',
+		'not_found_in_trash' => 'Nincsenek %s a lomtárban.',
+		'not_found' => 'Nincsenek %s a listában.',
+		'add_new_item' => 'Új %s létrehozása',
+	) );
+  $videos->create();
+  add_post_type_support( 'videok', 'excerpt' );
 
+  // Facebook posts
+  $fb = new PostTypeFactory( 'facebook' );
+	$fb->set_textdomain( TD );
+	$fb->set_icon('facebook');
+	$fb->set_name( 'Facebook bejegyzés', 'Facebook bejegyzések' );
+	$fb->set_labels( array(
+		'add_new' => 'Új %s',
+		'not_found_in_trash' => 'Nincsenek %s a lomtárban.',
+		'not_found' => 'Nincsenek %s a listában.',
+		'add_new_item' => 'Új %s létrehozása',
+	) );
+  $fb->create();
+  add_post_type_support( 'facebook', 'excerpt' );
+
+
+}
+
+function getYoutubeID( $url )
+{
+  preg_match_all("#((http://|https://)?(www.)?youtube\.com/watch\?[=a-z0-9-&_;]+)#i", $url ,$m);
+  $vURL = $m[0][0];
+  $pos = strpos($vURL,'v=');
+	$id = substr($vURL,$pos+2,11);
+
+  return $id;
 }
 
 
