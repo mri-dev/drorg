@@ -930,7 +930,6 @@ body.single-termekek{
   .viszontelado{
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
-    border-bottom: 5px solid #f1f1f1;
     & > .wrapper{
       display: -webkit-box;
       display: -ms-flexbox;
@@ -945,7 +944,7 @@ body.single-termekek{
         padding: 0 0 0 20px;
         flex: 1;
         h4{
-          margin: 0 0 10px 0;
+          margin: 10px 0 10px 0;
           font-size: 1.8em;
           font-weight: bold;
           line-height: 1;
@@ -1215,4 +1214,82 @@ body.single-termekek{
       }
     }
   }
+}
+
+@media all and (max-width: 1000px){
+  #main{
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .footer-contacts .wrapper{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .post-content h2 {
+    font-size: 5vh !important;
+    line-height: 1 !important;
+  }
+  .award-list-holder.style-slide,
+  .videos-holder.style-slide,
+  .product-categories-holder.style-boxslide{
+    padding: 0 30px;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .social,
+  .footer-contacts .subs-nav > .wrapper > .grid .subs,
+  .footer-contacts .subs-nav > .wrapper > .grid .subs > .grid > div,
+  .footer-contacts .cont .phone, .footer-contacts .cont .email{
+    flex-basis: 100% !important;
+    padding: 0 !important;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .social{
+    border-right: none;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .subs > .grid .inp input{
+    width: 70%;
+    height: auto;
+    padding: 10px 15px;
+    font-size: 1.8vh;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .subs > .grid .button button{
+    font-size: 2vh;
+    height: auto;
+    line-height: 1;
+    padding: 10px;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .subs > .grid > div{
+    text-align: center;
+    padding: 10px 25px !important;
+  }
+  .videos-holder .list .item .wrapper .title a{
+    font-size: 2.5vh;
+  }
+  .read-list a{
+    font-size: 2vh;
+  }
+  .footer-contacts .wrapper{
+    padding: 25px 0 !important;
+  }
+  .footer-contacts .cont .phone, .footer-contacts .cont .email{
+    text-align: center;
+    padding: 10px 0 !important;
+  }
+  .footer-contacts .cont .phone > .grid,
+  .footer-contacts .cont .email > .grid {
+    justify-content: center;
+  }
+  .footer-contacts .cont .phone > .grid > .val,
+  .footer-contacts .cont .email > .grid > .val{
+    flex-basis: 100%;
+  }
+  .footer-contacts .subs-nav > .wrapper > .grid .subs > .grid .text {
+    font-size: 3.5vh;
+  }
+}
+
+@media all and (max-width: 768px){
+
+}
+
+@media all and (max-width: 380px){
+
 }

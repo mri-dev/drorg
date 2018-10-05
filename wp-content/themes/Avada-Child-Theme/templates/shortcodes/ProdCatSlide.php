@@ -34,6 +34,14 @@
       $('.product-categories-holder.style-boxslide .list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1000,
+            settings: {
+              
+            }
+          }
+        ]
       });
 
       function resizeBoxHeight() {

@@ -43,6 +43,15 @@
       $('.blog-list-holder.style-slide.wantslide .list').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1000,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
       });
     })(jQuery);
   </script>
