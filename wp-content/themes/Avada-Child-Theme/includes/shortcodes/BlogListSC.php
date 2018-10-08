@@ -56,6 +56,10 @@ class BlogListSC
         $attr['datas'] = $datas;
         $attr['pages'] = $pages;
 
+        if (  $pages['items'] <= 3 ) {
+          $attr['style'] = 'standard';
+        }
+
         $pass_data = $attr;
 
         $output = '<div class="'.self::SCTAG.'-holder style-'.$attr['style'].''.( ((int)$datas->found_posts > 3) ? ' wantslide' : '' ).'">';
