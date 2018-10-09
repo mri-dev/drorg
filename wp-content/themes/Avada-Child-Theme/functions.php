@@ -555,6 +555,20 @@ function my_custom_fonts() {
   </style>';
 }
 
+function header_custom_js()
+{
+    echo '<script>
+    (function($) {
+      $(document).ready(function(){
+        $(\'#mobilnavtgl\').click(function(){
+          $(\'.navmenu\').slideToggle(400);
+        });
+      });
+    })( jQuery );
+    </script>';
+}
+add_action( 'wp_head', 'header_custom_js' );
+
 function auto_update_post_meta( $post_id, $field_name, $value = '' )
 {
     if ( empty( $value ) OR ! $value )

@@ -20,7 +20,7 @@
         <h1><?php echo the_title(); ?></h1>
         <?php if ($vidID): ?>
         <div class="video">
-          <iframe id="ytplayer" type="text/html" width="1150" height="646.875" src="https://www.youtube.com/embed/<?=$vidID?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+          <iframe id="ytplayer" type="text/html" width="1150" src="https://www.youtube.com/embed/<?=$vidID?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
         </div>
         <?php endif; ?>
         <div class="description">

@@ -5,6 +5,9 @@
       <?php $settings = Avada::settings(); ?>
       <a href="<?php echo get_option('siteurl'); ?>"><img src="<?php echo $settings['logo']['url']; ?>" alt="<?php echo get_option('blogname'); ?>"></a>
     </div>
+		<div class="show-on-mobile mobilnav" id="mobilnavtgl">
+			<i class="fa fa-bars"></i>
+		</div>
     <div class="nav">
       <div class="navmenu">
         <?php
