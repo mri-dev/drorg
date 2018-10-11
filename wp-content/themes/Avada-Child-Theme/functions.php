@@ -274,16 +274,17 @@ function create_custom_posttypes()
     )
   ) );
 
-  /*
-  $program_metabox = new CustomMetabox(
-    'programok',
-    __('Program beállítások', TD),
-    new ProgramMetaboxSave(),
-    'programok',
+  /**/
+  $prod_metabox = new CustomMetabox(
+    'termekek',
+    __('Termék adatok', TD),
+    new ProductsMetaboxSave(),
+    'termekek',
     array(
-      'class' => 'programsettings-postbox'
+      'class' => 'productssettings-postbox'
     )
   );
+  /* * /
 
   $programcontent_metabox = new CustomMetabox(
     'programok',

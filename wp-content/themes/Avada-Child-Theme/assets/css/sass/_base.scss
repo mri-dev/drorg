@@ -413,7 +413,7 @@ ul.nav {
       position: relative;
 
       .felirat{
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.91);
         text-align: center;
         padding: 25px;
         position: absolute;
@@ -907,7 +907,7 @@ body.single-termekek{
 
         font-size: 2.4em;
       }
-      .description{
+      .tab-content{
         font-family: 'Roboto', sans-serif;
         color: black;
         font-size: 1.1em;
@@ -916,6 +916,7 @@ body.single-termekek{
     }
   }
   .terms{
+    margin: 40px 0 0 0;
     .term{
       font-size: 0.9em;
       margin: 5px 0;
@@ -927,6 +928,43 @@ body.single-termekek{
         &:hover{
           color: $color-green;
         }
+      }
+    }
+  }
+}
+
+ul.tabs{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ececec;
+
+  li {
+    list-style: none;
+    padding: 0 20px 0 0;
+    margin: 0;
+
+    a {
+      font-size: 0.9em;
+      font-family: 'Roboto';
+      padding: 5px 0;
+      color: #8c8c8c;
+      display: block;
+      border-bottom: 4px solid transparent;
+      &:hover{
+        color: $color-green;
+      }
+    }
+
+    &.active{
+      a{
+        font-weight: bold;
+        color: $color-green;
+        border-bottom: 4px solid $color-green;
       }
     }
   }
@@ -1226,6 +1264,13 @@ body.single-termekek{
         }
       }
     }
+  }
+}
+
+.tab-content{
+  display: none;
+  &.active{
+    display: block;
   }
 }
 

@@ -60,9 +60,41 @@
       </div>
       <div class="prod-body">
         <h1><?php echo the_title(); ?></h1>
-        <div class="description">
+        <?php
+          $leiras_osszetevok = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_osszetevok', true);
+          $leiras_tanacsok = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_tanacsok', true);
+          $leiras_hasznalat = get_post_meta(get_the_ID(), METAKEY_PREFIX . 'leiras_hasznalat', true);
+        ?>
+        <ul class="tabs">
+          <li class="desc active"><a href="#desc" onclick="switchTab('desc')"><?=__('Termék leírás', TD)?></a></li>
+          <?php if ($leiras_osszetevok!=''): ?>
+          <li class="osszetevok"><a href="#osszetevok" onclick="switchTab('osszetevok')"><?=__('Összetevők', TD)?></a></li>
+          <?php endif; ?>
+          <?php if ($leiras_hasznalat!=''): ?>
+          <li class="hasznalat"><a href="#hasznalat" onclick="switchTab('hasznalat')"><?=__('Használati utasítás', TD)?></a></li>
+          <?php endif; ?>
+          <?php if ($leiras_tanacsok!=''): ?>
+          <li class="tanacsok"><a href="#tanacsok" onclick="switchTab('tanacsok')"><?=__('Tanácsok', TD)?></a></li>
+          <?php endif; ?>
+        </ul>
+        <div class="desc tab-content active">
           <?php echo the_content(); ?>
         </div>
+        <?php if ($leiras_osszetevok!=''): ?>
+        <div class="tab-content osszetevok">
+          <?php echo apply_filters( 'the_content', $leiras_osszetevok); ?>
+        </div>
+        <?php endif; ?>
+        <?php if ($leiras_hasznalat!=''): ?>
+        <div class="tab-content hasznalat">
+          <?php echo apply_filters( 'the_content', $leiras_hasznalat); ?>
+        </div>
+        <?php endif; ?>
+        <?php if ($leiras_tanacsok!=''): ?>
+        <div class="tab-content tanacsok">
+          <?php echo apply_filters( 'the_content', $leiras_tanacsok); ?>
+        </div>
+        <?php endif; ?>
         <div class="terms">
           <?php if ($kat_terms): ?>
             <div class="term">
@@ -85,6 +117,24 @@
             </div>
           <?php endif; ?>
         </div>
+        <script type="text/javascript">
+          (function($){
+            $(function($){
+              var anchor_tag = window.location.hash.substr(1);
+
+              if (anchor_tag) {
+                switchTab(anchor_tag);
+              }
+            });
+          })(jQuery);
+          function switchTab( tab ) {
+            jQuery('ul.tabs li.active').removeClass('active');
+            jQuery('ul.tabs li.'+tab).addClass('active');
+
+            jQuery('.tab-content.active').removeClass('active');
+            jQuery('.tab-content.'+tab).addClass('active');
+          }
+        </script>
       </div>
     </div>
   </div>
