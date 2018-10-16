@@ -151,6 +151,7 @@
         <?php while ( $products->have_posts() ) { $products->the_post(); ?>
         <?php
           $img = get_the_post_thumbnail_url(get_the_ID());
+          $img = ($img) ?: IMG.'/no-product-image.png';
         ?>
         <div class="product">
           <div class="wrapper">

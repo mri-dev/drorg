@@ -30,6 +30,7 @@
 <div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
   <?php while (have_posts()): the_post();
       $img = get_the_post_thumbnail_url(get_the_ID());
+      $img = ($img) ?: IMG.'/no-product-image.png';
       $kat_terms = wp_get_post_terms(get_the_ID(), 'kategoria');
       $csop_terms = wp_get_post_terms(get_the_ID(), 'csoportok');
       $tags = wp_get_post_terms(get_the_ID(), 'post_tag');
