@@ -6,6 +6,102 @@
   $current_page = 1;
   $current_page = (!empty($_GET['page'])) ? (int)$_GET['page'] : $current_page;
 
+  function getUsableTagIDS()
+  {
+    $xtrim = (!empty($_GET['src'])) ? explode(" ", $_GET['src']) : array();
+    $usabe_tag_id = array();
+
+    foreach ((array)$xtrim as $ctag) {
+      $ctag = trim($ctag);
+      $tag = get_term_by('name', $ctag, 'post_tag', ARRAY_A);
+
+      if ($tag) {
+        $usabe_tag_id[] = $tag['term_id'];
+      }
+    }
+
+    return $usabe_tag_id;
+  }
+
+  function custom_searching( $src)
+  {
+    global $wpdb;
+    $nsrc = '';
+    $xtrim = (!empty($_GET['src'])) ? explode(" ", $_GET['src']) : array();
+    $tagids = getUsableTagIDS();
+
+    $firsttext = $xtrim[0];
+
+    $donothing = true;
+    $dotagsrc = false;
+
+    $nsrc .= " AND (";
+
+    if (!empty($tagids) && $tagids) {
+      $dotagsrc = true;
+      $nsrc .= " (".$wpdb->term_relationships.".term_taxonomy_id IN(".implode(',', $tagids).")) ";
+      $donothing = false;
+    } else {
+      $donothing = true;
+    }
+
+    // SRC title
+    if ($firsttext != '') {
+      $donothing = false;
+      if ($dotagsrc) {
+        $nsrc .= " OR";
+      }
+      $nsrc .= " (".$wpdb->posts.".post_title LIKE '%".$firsttext."%')";
+
+      // Cikkszám keresés
+      if (count($xtrim)) {
+        $nsrc .= " OR (mt1.meta_key = '".METAKEY_PREFIX."cikkszam' AND mt1.meta_value = '".$firsttext."')";
+      }
+    } else {
+      $donothing = true;
+    }
+
+    $nsrc .= ") ";
+
+    if ($donothing) {
+      $nsrc = '';
+    }
+
+    return $nsrc;
+    //return $src;
+  }
+  add_filter( 'posts_search', 'custom_searching' );
+
+  function custom_qry_join( $join )
+  {
+    global $wpdb;
+    $tagids = getUsableTagIDS();
+    $xtrim = (!empty($_GET['src'])) ? explode(" ", $_GET['src']) : array();
+    $firsttext = sanitize_title($xtrim[0]);
+
+    if ($firsttext != '') {
+      $njoin = " INNER JOIN ".$wpdb->postmeta." AS mt1 ON (".$wpdb->posts.".ID = mt1.post_id) ";
+    }
+
+    if (!empty($tagids) && $tagids) {
+      $njoin .= " LEFT JOIN ".$wpdb->term_relationships." ON (".$wpdb->posts.".ID = ".$wpdb->term_relationships.".object_id) ";
+    }
+
+    $njoin .= $join;
+
+    return $njoin;
+  }
+  add_filter('posts_join', 'custom_qry_join');
+
+  function custom_qry_groupby( $groupby )
+  {
+    global $wpdb;
+    $groupby = "{$wpdb->posts}.ID";
+
+    return $groupby;
+  }
+  add_filter( 'posts_groupby', 'custom_qry_groupby' );
+
   if (isset($_GET['order']) && !empty($_GET['order'])) {
     $xord = explode("-", $_GET['order']);
     $orderby = $xord[0];
@@ -38,10 +134,36 @@
   if (isset($_GET['src']) && $_GET['src'] != '') {
     $src = explode(" ", $_GET['src']);
     $is_searched = implode(",",$src);
-    $arg['tag'] = $is_searched;
+    //$arg['tag'] = $is_searched;
+    $arg['s'] = $_GET['src'];
   }
 
+  /* * /
+  $arg['meta_query'] = array(
+  	'relation' => 'AND', // Optional, defaults to "AND"
+  	array(
+  		'key'     => METAKEY_PREFIX.'cikkszam',
+  		'value'   => 'BOR',
+  		'compare' => '='
+  	),
+    array(
+  		'key'     => METAKEY_PREFIX.'osszetevok',
+  		'value'   => 'BOT',
+  		'compare' => 'LIKE'
+  	)
+  );
+  /* */
+
+
   $products = new WP_Query($arg);
+
+  /* * /
+  echo $products->request;
+  echo '<pre>';
+  print_r($products);
+  echo '</pre>';
+  /* */
+
 
   $pages['current'] = $current_page;
   $pages['max'] = (int)$products->max_num_pages;

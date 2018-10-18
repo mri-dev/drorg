@@ -34,6 +34,7 @@
       $kat_terms = wp_get_post_terms(get_the_ID(), 'kategoria');
       $csop_terms = wp_get_post_terms(get_the_ID(), 'csoportok');
       $tags = wp_get_post_terms(get_the_ID(), 'post_tag');
+      $cikkszam = get_post_meta( get_the_ID(), METAKEY_PREFIX.'cikkszam', true);
 
       $csop_terms_nav = tax_nav( $csop_terms[0] );
   ?>
@@ -56,7 +57,7 @@
     <div class="cont">
       <div class="image">
         <div class="wrapper">
-          <img src="<?=$img?>" alt="">
+          <img src="<?=$img?>" alt="<?php the_title(); ?>">
         </div>
       </div>
       <div class="prod-body">
@@ -97,6 +98,9 @@
         </div>
         <?php endif; ?>
         <div class="terms">
+          <div class="term">
+            <?=__('Cikkszám', TD)?>: <?php echo $cikkszam; ?>
+          </div>
           <?php if ($kat_terms): ?>
             <div class="term">
               <?=__('Termék kategória', TD)?>: <?php foreach ($kat_terms as $t): ?>
