@@ -175,7 +175,77 @@ function jelentkezes_custom_title( $title )
   return $title;
 }
 
+function readCSV($csvFile){
+  $file_handle = fopen($csvFile, 'r');
+  while (!feof($file_handle) ) {
+      $line_of_text[] = fgetcsv($file_handle, 1024, ";");
+  }
+  fclose($file_handle);
+  return $line_of_text;
+}
 
+function csvImagePrepare( $csv )
+{
+  global $wpdb;
+
+  $csvnew = array();
+  $updir = wp_upload_dir();
+  foreach ((array)$csv as $cs) {
+    $file = $updir['baseurl'].'/products/'.$cs[1].'/'.$cs[2].'.jpg';
+    $imgpath =$cs[1].'/'.$cs[2].'.jpg';
+    $csvnew[] = array(
+      'cikkszam' => $cs[0],
+      'mappa' => $cs[1],
+      'img' => $cs[2],
+      'imgpath' => $imgpath,
+      'url' => $file,
+      'exists' => file_exists($updir['basedir'].'/products/'.$cs[1].'/'.$cs[2].'.jpg'),
+      'postID' => foundPostIDByMetaValue('cikkszam', trim($cs[0]))
+    );
+  }
+
+  return $csvnew;
+}
+
+function foundPostIDByMetaValue( $meta, $value )
+{
+  $qry = new WP_Query(array(
+    'post_type' => 'termekek',
+    'meta_key' => METAKEY_PREFIX.$meta,
+    'meta_value' => $value
+  ));
+
+  if( $qry->have_posts() ) {
+    while( $qry->have_posts() ) {
+      $qry->the_post();
+      return get_the_ID();
+    } // end while
+  } // end if
+  wp_reset_postdata();
+}
+
+function updateUploadedProductImages( $csv )
+{
+  foreach ((array)$csv as $e) {
+    if (!$e['exists'] || empty($e['postID'])) {
+      continue;
+    }
+
+    auto_update_post_meta( $e['postID'], METAKEY_PREFIX . 'productprofil', trim($e['imgpath']) );
+  }
+}
+
+function findProductUploadedImage( &$img, $postid )
+{
+  $imgsrc = get_post_meta($postid, METAKEY_PREFIX.'productprofil', true);
+  $updir = wp_upload_dir();
+
+  if ($imgsrc != '') {
+    $img = $updir['baseurl'].'/products/'.$imgsrc;
+  }
+
+  return $img;
+}
 
 function rd_init()
 {
@@ -186,6 +256,19 @@ function rd_init()
 
   add_image_size( 'post500thumbnail', 500, 9999 );
   add_theme_support('category-thumbnails');
+
+  /* * /
+  $kat_src = get_stylesheet_directory() . '/drorganic_termek_kepek_lista.csv';
+  $csv = csvImagePrepare(readCSV($kat_src));
+  updateUploadedProductImages($csv);
+  /* */
+
+  /* * /
+  echo '<pre>';
+  print_r($csv);
+  echo '</pre>';
+  /* */
+
 
   create_custom_posttypes();
 }

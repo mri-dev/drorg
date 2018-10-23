@@ -30,11 +30,25 @@
 <div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
   <?php while (have_posts()): the_post();
       $img = get_the_post_thumbnail_url(get_the_ID());
+      findProductUploadedImage($img, get_the_ID());
       $img = ($img) ?: IMG.'/no-product-image.png';
       $kat_terms = wp_get_post_terms(get_the_ID(), 'kategoria');
       $csop_terms = wp_get_post_terms(get_the_ID(), 'csoportok');
       $tags = wp_get_post_terms(get_the_ID(), 'post_tag');
       $cikkszam = get_post_meta( get_the_ID(), METAKEY_PREFIX.'cikkszam', true);
+      $termekcsoportok = array();
+
+      if ($csop_terms) {
+        foreach ((array)$csop_terms as $cs) {
+          if ($cs->parent == 0) {
+            continue;
+          } else {
+            $parent = get_term($cs->parent);
+            $cs->name = $parent->name. ' / '.$cs->name;
+          }
+          $termekcsoportok[] = $cs;
+        }
+      }
 
       $csop_terms_nav = tax_nav( $csop_terms[0] );
   ?>
@@ -98,21 +112,26 @@
         </div>
         <?php endif; ?>
         <div class="terms">
+          <?php if ($cikkszam): ?>
           <div class="term">
             <?=__('Cikkszám', TD)?>: <?php echo $cikkszam; ?>
           </div>
+          <?php endif; ?>
           <?php if ($kat_terms): ?>
             <div class="term">
-              <?=__('Termék kategória', TD)?>: <?php foreach ($kat_terms as $t): ?>
+              <?=__('Termék kategória', TD)?>:
+              <?php
+              foreach ($kat_terms as $t): ?>
                 <a href="<?=get_term_link($t)?>"><?=$t->name?></a>
               <?php endforeach; ?>
             </div>
           <?php endif; ?>
-          <?php if ($csop_terms): ?>
+          <?php if ($termekcsoportok): ?>
             <div class="term">
-              <?=__('Termék csoport', TD)?>: <?php foreach ($csop_terms as $t): ?>
-                <a href="<?=get_term_link($t)?>"><?=$t->name?></a>
-              <?php endforeach; ?>
+              <?=__('Termék csoport', TD)?>: <?php
+              $csopnav = '';
+              foreach ($termekcsoportok as $t): $csopnav .= '<a href="'.get_term_link($t).'">'.$t->name.'</a>, '; endforeach; ?>
+              <?php $csopnav = rtrim($csopnav,", "); echo $csopnav; ?>
             </div>
           <?php endif; ?>
           <?php if ($tags): ?>

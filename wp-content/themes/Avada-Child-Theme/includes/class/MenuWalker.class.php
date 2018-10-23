@@ -7,6 +7,11 @@ class CustomMenuWalker extends Walker_Nav_Menu
     $title = $item->title;
     $description = $item->description;
     $permalink = $item->url;
+
+    if ($title == 'Minden család') {
+      $item->classes[] = 'menu-item-has-children';
+    }
+
     $output .= "<li class='" .  implode(" ", $item->classes) . "'>";
     // _menu_item_fusion_megamenu_icon
     $icon = get_post_meta( $item->ID, '_menu_item_fusion_megamenu_icon', true);
@@ -36,6 +41,21 @@ class CustomMenuWalker extends Walker_Nav_Menu
       $output .= '</a>';
     } else {
       $output .= '</span>';
+    }
+
+    if ($title == 'Minden család')
+    {
+      $kats = get_terms( 'kategoria', array(
+        'hide_empty' => false
+      ) );
+
+      if ($kats) {
+        $output .= '<ul class="sub-menu col2menu">';
+          foreach ((array)$kats as $kat) {
+            $output .= '<li class="menu-item"><a href="'.get_term_link($kat).'">'.$kat->name.'</a></li>';
+          }
+        $output .= '</ul>';
+      }
     }
   }
 }

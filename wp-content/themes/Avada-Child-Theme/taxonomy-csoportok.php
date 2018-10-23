@@ -5,7 +5,7 @@
   $termopt = get_option('taxonomy_term_'.$taxonomy->term_id);
 ?>
 <div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
-  <div class="borito" style="<?php if (isset($termopt) && !empty($termopt['boritokep'])): ?>background-image: url('<?=$termopt['boritokep']?>');<?php endif; ?>">
+  <div class="borito<?=(!$termopt['boritokep'])?' no-image':''?>" style="<?php if (isset($termopt) && !empty($termopt['boritokep'])): ?>background-image: url('<?=$termopt['boritokep']?>');<?php endif; ?>">
     <div class="wrapper">
       <div class="felirat">
         <h1><?php echo $taxonomy->name; ?></h1>

@@ -190,6 +190,21 @@ body, html {
             }
           }
         }
+
+        &.col2menu{
+          width: 400px;
+          max-width: 400px;
+          & > li {
+            float: left;
+            width: 50%;
+            display: inline-block;
+
+            a{
+              font-size: 0.8em;
+              line-height: 1;
+            }
+          }
+        }
       }
 
       &:hover{
@@ -401,7 +416,7 @@ ul.nav {
       max-width: 100%;
     }
   }
-  .borito {
+  .borito:not(.no-image) {
     background: #acacac;
     height: 420px;
     background-position: center;
@@ -442,6 +457,19 @@ ul.nav {
       }
     }
   }
+  .borito.no-image {
+    .wrapper{
+      width: $page-width;
+      margin: 0 auto;
+
+      .felirat{
+        h1{
+          color: $color-green;
+          font-size: 2.2em;
+        }
+      }
+    }
+  }
 
 }
 
@@ -460,6 +488,7 @@ ul.nav {
       padding: 15px;
       & > .wrapper{
         border: 0.5px solid transparent;
+        padding: 0.5px;
         .image{
           text-align: center;
           padding: 15px;
@@ -913,7 +942,7 @@ body.single-termekek{
         margin: 0 0 25px 0;
         color: $color-green;
         font-weight: bold;
-
+        line-height: 1.2;
         font-size: 2.4em;
       }
       .tab-content{
@@ -930,12 +959,12 @@ body.single-termekek{
   .terms{
     margin: 40px 0 0 0;
     .term{
-      font-size: 0.9em;
+      font-size: 0.7em;
       margin: 5px 0;
 
       a{
         font-family: 'Roboto';
-        color: #444444;
+        color: #51b179;
 
         &:hover{
           color: $color-green;
