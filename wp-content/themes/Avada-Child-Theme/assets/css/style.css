@@ -243,8 +243,8 @@ body, html {
 }
 /* line 194, sass/_base.scss */
 .navmenu ul.menu > li > .sub-menu.col2menu {
-  width: 400px;
-  max-width: 400px;
+  width: 300px;
+  max-width: 300px;
 }
 /* line 197, sass/_base.scss */
 .navmenu ul.menu > li > .sub-menu.col2menu > li {
