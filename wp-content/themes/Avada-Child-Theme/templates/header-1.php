@@ -32,3 +32,6 @@
     </div>
 	</div>
 </div>
+<div class="show-on-mobile mobile-slogan">
+	Természet ihlette bioaktív bőrápolás
+</div>

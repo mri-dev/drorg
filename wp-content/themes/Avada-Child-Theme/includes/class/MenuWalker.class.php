@@ -17,7 +17,7 @@ class CustomMenuWalker extends Walker_Nav_Menu
     $icon = get_post_meta( $item->ID, '_menu_item_fusion_megamenu_icon', true);
 
     //Add SPAN if no Permalink
-    if( $permalink && $permalink != '#' ) {
+    if( $permalink) {
       $output .= '<a href="' . $permalink . '">';
     } else {
       $output .= '<span>';
