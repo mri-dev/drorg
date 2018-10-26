@@ -31,6 +31,9 @@
       $('.award-list-holder.style-slide .list').slick({
         slidesToShow: 5,
         slidesToScroll: 1,
+        autoplay: true,
+        speed: 2000,
+        delay: 1,
         responsive: [
           {
             breakpoint: 1000,

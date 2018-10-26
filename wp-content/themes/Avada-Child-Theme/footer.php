@@ -58,6 +58,9 @@ $c_pageID = Avada::c_pageID();
             </div>
             <div class="val">
               <?php echo get_option('phone'); ?>
+              <div class="cf">
+                (<?php echo __('Hétköznap 10-14 óra között vagyunk elérhetőek.',TD); ?>)
+              </div>
             </div>
           </div>
         </div>

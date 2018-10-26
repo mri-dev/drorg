@@ -56,6 +56,9 @@
       $('.product-categories-holder.style-boxslide .list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true,
+        speed: 2000,
+        delay: 6000,
         responsive: [
           {
             breakpoint: 1000,
@@ -67,7 +70,7 @@
           }
         ]
       });
-      
+
       function resizeBoxHeight() {
         var ww = $(document).width();
         var ismobile = (ww < 1000) ? true : false;
