@@ -9,4 +9,5 @@
 	 require_once "VideosSC.php";
 	 require_once "FacebookListSC.php";
 	 require_once "ProdCatSC.php";
+	 require_once "TermekListSC.php";
 ?>

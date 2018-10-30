@@ -494,7 +494,8 @@ ul.nav {
   text-transform: uppercase;
 }
 
-.term-list{
+.term-list,
+.termeklist-holder{
   padding: 15px 0;
 
   .products{
@@ -934,6 +935,14 @@ ul.nav {
         }
       }
     }
+  }
+}
+
+#main .comment-submit, #reviews input#submit, .button-default, .button.default, .comment-form input[type="submit"], .fusion-button-default, .fusion-portfolio-one .fusion-button, .post-password-form input[type="submit"], .ticket-selector-submit-btn[type=submit]{
+  background: $color-green;
+
+  &:hover{
+    background: lighten($color-green, 10%);
   }
 }
 
