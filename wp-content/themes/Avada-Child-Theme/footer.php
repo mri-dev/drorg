@@ -16,71 +16,76 @@
 $c_pageID = Avada::c_pageID();
 ?>
 
-<div class="footer-contacts">
-  <div class="subs-nav">
-    <div class="wrapper">
-      <div class="grid">
-        <div class="social">
-          <?php
-            $social = new Avada_Social_Icons();
-            $icons = $social->render_social_icons(array(
-              'position' => 'footer',
-            ));
-            echo $icons;
-          ?>
-        </div>
-        <div class="subs">
-          <div class="grid">
-            <div class="text">
-              <?php echo __('Iratkozz fel a hírlevelünkre!',TD); ?>
-            </div>
-            <div class="inp">
-              <input type="text" name="" value="">
-            </div>
-            <div class="button">
-              <button type="button"><?php echo __('Feliratkozok',TD); ?> <i class="fa fa-long-arrow-right"></i></button>
-            </div>
+<form class="" action="/feliratkozas" method="get">
+  <div class="footer-contacts">
+    <div class="subs-nav">
+      <div class="wrapper">
+        <div class="grid">
+          <div class="social">
+            <?php
+              $social = new Avada_Social_Icons();
+              $icons = $social->render_social_icons(array(
+                'position' => 'footer',
+              ));
+              echo $icons;
+            ?>
+          </div>
+          <div class="subs">
+              <div class="main-text">
+                <?php echo __('Tudj meg többet a természetes szépségről, ismerd meg újdonságainkat, akcióinkat!',TD); ?>
+              </div>
+              <div class="grid">
+                <div class="text">
+                  <?php echo __('Iratkozz fel a Szépség Hírlevelünkre!',TD); ?>
+                </div>
+                <div class="inp">
+                  <input type="text" name="email" value="">
+                </div>
+                <div class="button">
+                  <button type="submit"><?php echo __('Feliratkozom',TD); ?> <i class="fa fa-long-arrow-right"></i></button>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cont">
-    <div class="wrapper">
-      <div class="grid">
-        <div class="phone">
-          <div class="grid">
-            <div class="ico">
-              <i class="fa fa-phone"></i>
+    <div class="cont">
+      <div class="wrapper">
+        <div class="grid">
+          <div class="phone">
+            <div class="grid">
+              <div class="ico">
+                <i class="fa fa-phone"></i>
+              </div>
+              <div class="text">
+                <?php echo __('Kérdésed<br>van?',TD); ?>
+              </div>
+              <div class="val">
+                <?php echo get_option('phone'); ?>
+                <div class="cf">
+                  (<?php echo __('Hétköznap 10-14 óra között vagyunk elérhetőek.',TD); ?>)
+                </div>
+              </div>
             </div>
-            <div class="text">
-              <?php echo __('Kérdésed<br>van?',TD); ?>
-            </div>
-            <div class="val">
-              <?php echo get_option('phone'); ?>
-              <div class="cf">
-                (<?php echo __('Hétköznap 10-14 óra között vagyunk elérhetőek.',TD); ?>)
+          </div>
+          <div class="email">
+            <div class="grid">
+              <div class="ico">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <div class="text">
+                <?php echo __('Termékről<br>kérdeznél?',TD); ?>
+              </div>
+              <div class="val">
+                <?php echo get_option('admin_email'); ?>
               </div>
             </div>
           </div>
         </div>
-        <div class="email">
-          <div class="grid">
-            <div class="ico">
-              <i class="fa fa-envelope"></i>
-            </div>
-            <div class="text">
-              <?php echo __('Termékről<br>kérdeznél?',TD); ?>
-            </div>
-            <div class="val">
-              <?php echo get_option('admin_email'); ?>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 
 <?php
 /**
