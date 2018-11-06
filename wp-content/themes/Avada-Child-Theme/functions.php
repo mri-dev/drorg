@@ -184,6 +184,23 @@ function readCSV($csvFile){
   return $line_of_text;
 }
 
+function csvTAGPrepare( $csv )
+{
+  global $wpdb;
+
+  $csvnew = array();
+  foreach ((array)$csv as $cs)
+  {
+    $csvnew[] = array(
+      'cikkszam' => $cs[0],
+      'tags' => rtrim(str_replace(", ", ",",utf8_encode($cs[1])),","),
+      'postID' => foundPostIDByMetaValue('cikkszam', trim($cs[0]))
+    );
+  }
+
+  return $csvnew;
+}
+
 function csvImagePrepare( $csv )
 {
   global $wpdb;
@@ -235,6 +252,17 @@ function updateUploadedProductImages( $csv )
   }
 }
 
+function updateUploadedProductTags( $csv )
+{
+  foreach ((array)$csv as $e) {
+    if (empty($e['postID']) || empty($e['tags'])) {
+      continue;
+    }
+
+    wp_set_post_tags( $e['postID'], $e['tags'], false );
+  }
+}
+
 function findProductUploadedImage( &$img, $postid )
 {
   $imgsrc = get_post_meta($postid, METAKEY_PREFIX.'productprofil', true);
@@ -258,6 +286,14 @@ function rd_init()
   add_theme_support('category-thumbnails');
 
   /* * /
+  // TAG UPDATE
+  $kat_src = get_stylesheet_directory() . '/tags.csv';
+  $csv = csvTAGPrepare(readCSV($kat_src));
+  updateUploadedProductTags($csv);
+  /* */
+
+  /* * /
+  // IMAGE UPDATE
   $kat_src = get_stylesheet_directory() . '/drorganic_termek_kepek_lista.csv';
   $csv = csvImagePrepare(readCSV($kat_src));
   updateUploadedProductImages($csv);
