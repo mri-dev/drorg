@@ -505,7 +505,7 @@ ul.nav {
     align-items: flex-start;
     margin: -15px;
     & > div {
-      flex-basis: calc(100% / 3);
+      flex-basis: calc(100% / 4);
       padding: 15px;
       & > .wrapper{
         border: 0.5px solid transparent;
@@ -701,7 +701,7 @@ ul.nav {
                 color: black;
                 z-index: 2;
                 border: 1px solid white;
-                background: rgba(255, 255, 255, 0.85);
+                background: rgba(255, 255, 255, 0.86);
                 -webkit-transform:translate(-50%,-50%);
                 transform:translate(-50%,-50%);
               }
@@ -1196,7 +1196,6 @@ ul.tabs{
       }
     }
   }
-
 
   .slick-arrow{
     position: absolute;
