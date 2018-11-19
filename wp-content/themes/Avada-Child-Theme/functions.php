@@ -533,10 +533,13 @@ add_filter('avada_logo_append', 'after_logo_content');
 if( defined('DEVMODE') && DEVMODE === false ) {
 	function ga_tracking_code () {
 		?>
-		<script>
-
-
-		</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50056233-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-50056233-1');
+    </script>
 		<?
 	}
 	add_action('wp_footer', 'ga_tracking_code');
