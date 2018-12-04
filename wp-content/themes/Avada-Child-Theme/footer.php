@@ -16,7 +16,10 @@
 $c_pageID = Avada::c_pageID();
 ?>
 
-<form class="" action="/feliratkozas" method="get">
+<form class="" action="https://admin.dimail.hu/external/form/" method="post" name="newsletter-88-form">
+  <input type="hidden" name="list" value="4d6a82157593fac5bf8d514a3b81c90de14c4e13" />
+  <input type="hidden" name="onSuccess" value="" />
+  <input type="hidden" name="onError" value="" />
   <div class="footer-contacts">
     <div class="subs-nav">
       <div class="wrapper">
@@ -39,10 +42,11 @@ $c_pageID = Avada::c_pageID();
                   <?php echo __('Iratkozz fel a Szépség Hírlevelünkre!',TD); ?>
                 </div>
                 <div class="inp">
-                  <input type="text" name="email" value="">
+                  <input id="newsletter-88-form-name" type="text" name="subscriberName" value="" placeholder="Teljes név">
+                  <input id="newsletter-88-form-email" type="text" name="subscriberEmail" value="" placeholder="E-mail cím">
                 </div>
                 <div class="button">
-                  <button type="submit"><?php echo __('Feliratkozom',TD); ?> <i class="fa fa-long-arrow-right"></i></button>
+                  <button type="submit" name="subscribe" value="true"><?php echo __('Feliratkozom',TD); ?> <i class="fa fa-long-arrow-right"></i></button>
                 </div>
               </div>
           </div>

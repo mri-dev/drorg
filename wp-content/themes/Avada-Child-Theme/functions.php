@@ -53,6 +53,8 @@ function theme_enqueue_styles() {
     wp_enqueue_script( 'jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'), '1.12.1');
     wp_enqueue_script( 'jquery-ui-loc-hu', IFROOT . '/assets/js/jquery-ui-loc-hu.js');
     wp_enqueue_script( 'slick', IFROOT . '/assets/vendors/slick/slick.min.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script( 'dimail', 'https://admin.dimail.hu/r/popup/4d6a82157593fac5bf8d514a3b81c90de14c4e13');
+
     //wp_enqueue_script( 'fontasesome', '//use.fontawesome.com/releases/v5.0.6/js/all.js');
     //wp_enqueue_script( 'angularjs', '//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js');
     //wp_enqueue_script( 'angular-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js');
